@@ -1,5 +1,5 @@
 def ordenar_lista_string(lista_string):
-    if len(lista_string) == 1:
+    if len(lista_string) <= 1:
         return lista_string
 
     indice_meio = len(lista_string) // 2
@@ -28,17 +28,15 @@ def ordenar_lista_string(lista_string):
 
 
 def is_anagram(first_string, second_string):
-    # Retorne False se alguma das palavras passadas por parâmetro for
-    # uma string vazia
-    if len(first_string) == 0 or len(second_string) == 0:
-        return False
-
     first_string = first_string.lower()
     second_string = second_string.lower()
 
     first_string_ordenada = "".join(ordenar_lista_string(list(first_string)))
     second_string_ordenada = "".join(ordenar_lista_string(list(second_string)))
 
-    comparacao = first_string_ordenada == second_string_ordenada
+    comparacao = False
+
+    if len(first_string) != 0 and len(second_string) != 0:
+        comparacao = first_string_ordenada == second_string_ordenada
 
     return (first_string_ordenada, second_string_ordenada, comparacao)
